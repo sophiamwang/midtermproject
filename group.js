@@ -1,7 +1,10 @@
 //this is the group javascript file
-var batteryArray, cyborgArray, gunArray;
+var batteryArray= [];
+var cyborgArray= []; 
+var gunArray = [];
 var batteryPic,cyborgGif, gunPic, background;
 var batteryX,batteryY,numberofBatteries;
+var ground; //this is the pixel height of the ground 
 var speed; //this will be the speed at which the ground, batteries, and cyborg will move
 
 function preload(){
@@ -11,22 +14,27 @@ function preload(){
 function setup(){
 	// if width of screen.. canvas size..
 	createCanvas (500,500);
-	numberofBatteries = int(random (0,5));
+	numberofBatteries = int(random(1,5));
+	ground = 400; 
+	speed = 3;
+
+	for (var i = 0; i<numberofBatteries; i++) {
+		var temp = new batteries(random(20,width-20),ground);
+		batteryArray.push(temp)
+	}
 }
 
 function draw() {
 	background(0);
 
 	for (var i; i<numberofBatteries;i++) {
-		// rule for generating position
-		batteryX = random (20,480);
-		batteryY = 400; //position above ground
-		// randomized time for generating position e.g. frames ellaped 50
-		new batteries(batteryX,batteryY);
-		batteryArray.push([batteryX,batteryY]);
-		if (i== numberofBatteries-1) {
-			batteryArray.split(0,-1);
-			numberofBatteries = int(random (0,5));
+		batteryArray[i].move();
+		batteryArray[i].display();
+	}
+	//check if it is off screen and remove if it is
+	for (var i; i<numberofBatteries;i++){
+		if (batteryArray[i][0] < 0 ){
+			batteryArray.splice(i,1);
 		}
 	}
 
@@ -44,16 +52,8 @@ class batteries {
 	move () {
 		batteryX -=speed;
 	}
-	update() {
-		//delete batteries that have been picked up
-		//collision
-		if (batteryX <0) {
-			//delete batteries that have disappeared
-			 batteryX = width;
-		}
-
-	}
 }
+
 
 class guns{
 
