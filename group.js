@@ -4,62 +4,118 @@ var cyborgArray= [];
 var gunArray = [];
 var batteryPic,cyborgGif, gunPic, background;
 var batteryX,batteryY,numberofBatteries;
-var ground; //this is the pixel height of the ground 
-var speed; //this will be the speed at which the ground, batteries, and cyborg will move
+var cyborgX,cyborgY, numberofCyborgs;
+var ground = 400; //this is the pixel height of the ground 
+var speed = 3; //this will be the speed at which the ground, batteries, and cyborg will move
+var batteryOffScreen = false;
+var cyborgOffScreen = false;
+var life = 5;
 
 function preload(){
 	batteryPic = loadImage("battery.png");
+	cyborgGif = loadGif("cyborg.gif");
 }
 
 function setup(){
 	// if width of screen.. canvas size..
 	createCanvas (500,500);
 	numberofBatteries = int(random(1,5));
-	ground = 400; 
-	speed = 3;
+	numberofCyborgs = int(random(1,2));
 
 	for (var i = 0; i<numberofBatteries; i++) {
 		var temp = new batteries(random(20,width-20),ground);
-		batteryArray.push(temp)
+		batteryArray.push(temp);
 	}
+/*
+	for (var i = 0; i <numberofCyborgs;i++) {
+		var temp = new cyborgs(random(20,width-20,ground));
+		cyborgArray.push(temp);
+	}
+*/
 }
 
 function draw() {
-	background(0);
+	fill(0);
+	rectMode(CORNER);
+	rect(0,0,width,height);
 
-	for (var i; i<numberofBatteries;i++) {
-		batteryArray[i].move();
+	for (var i=0; i<batteryArray.length;i++) {
 		batteryArray[i].display();
+		batteryArray[i].move();
+
 	}
-	//check if it is off screen and remove if it is
-	for (var i; i<numberofBatteries;i++){
-		if (batteryArray[i][0] < 0 ){
+
+	for (var i=0; i<batteryArray.length;i++) {
+		//when the battery is off screen, add a new battery
+		if (batteryOffScreen == true) {
 			batteryArray.splice(i,1);
+			var temp = new batteries (random(20,width-20), ground);
+			batteryArray.push(temp);
+
+		}
+		// else if the kouki picks up the battery remove it from array and add a new 
+	}
+
+	/* for (var i =0; i<cyborgArray.length;i++) {
+		cyborgArray[i].display();
+		cyborgArray[i].move();
+	}
+
+	for (var i=0; i<cyborgArray.length;i++) {
+		if (cyborgOffScreen == true) {
+			cyborgArray.splice(i,1);
+			var temp = new cyborgs(random(20,width-20),ground);
+			cyborgArray.push(temp);
 		}
 	}
-
+	*/
 }
 
 class batteries {
 	constructor(x,y){
-		batteryX = this.x;
-		batteryY = this.y;
+		this.x = x;
+		this.y = y;
+
+	}
+	display() {
+		imageMode(CENTER);
+		image(batteryPic,this.x,this.y,20,40);
 	}
 
-	display(){
-		image(batteryPic,batteryX,batteryY,20,40);
-	}
-	move () {
-		batteryX -=speed;
-	}
+	move() {
+		this.x -=speed;
+		if (this.x <0) {
+			batteryOffScreen = true;
+		}
+		else {
+			batteryOffScreen = false;
+		}
+	}	
+	
 }
 
-
-class guns{
-
-}
 
 class cyborgs{
+	constructor (x,y) {
+		this.x = x;
+		this.y = y;
+	}
+	display() {
+		imageMode(CENTER);
+		image(cyborgGif,this.x,this.y,30,60);
+	}
+	move () {
+		this.x -=speed;
+		if (this.x <0) {
+			cyborgOffScreen = true;
+		}
+		else {
+			cyborgOffScreen = false;
+		}
+	}
+}
+
+class guns{
 
 }
 
