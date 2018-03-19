@@ -35,7 +35,6 @@ function setup(){
 }
 
 function draw() {
-	image(cyborgGif, 0, 0);
 	fill(0);
 	rectMode(CORNER);
 	rect(0,0,width,height);
