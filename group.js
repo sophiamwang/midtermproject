@@ -12,7 +12,7 @@ var cyborgOffScreen = false;
 var life = 5;
 
 function preload(){
-	batteryPic = loadImage("battery.png");
+	//batteryPic = loadImage("battery.png");
 	cyborgGif = loadGif("images/cyborg.gif");
 }
 
