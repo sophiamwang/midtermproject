@@ -1,4 +1,5 @@
 //this is the group javascript file
+var back;
 var batteryArray= [];
 var cyborgArray= []; 
 var gunArray = [];
@@ -12,6 +13,7 @@ var cyborgOffScreen = false;
 var life = 5;
 
 function preload(){
+	back = loadGif("images/background.gif");
 	//batteryPic = loadImage("battery.png");
 	cyborgGif = loadGif("images/cyborg.gif");
 }
@@ -38,6 +40,8 @@ function draw() {
 	fill(0);
 	rectMode(CORNER);
 	rect(0,0,width,height);
+	
+	mage(back, 0, 0);
 
 	for (var i=0; i<batteryArray.length;i++) {
 		batteryArray[i].display();
