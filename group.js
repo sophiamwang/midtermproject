@@ -13,7 +13,7 @@ var life = 5;
 
 function preload(){
 	batteryPic = loadImage("battery.png");
-	cyborgGif = loadGif("cyborg.gif");
+	cyborgGif = loadGif("images/cyborg.gif");
 }
 
 function setup(){
@@ -35,6 +35,7 @@ function setup(){
 }
 
 function draw() {
+	image(cyborgGif, 0, 0);
 	fill(0);
 	rectMode(CORNER);
 	rect(0,0,width,height);
