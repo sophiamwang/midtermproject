@@ -3,7 +3,7 @@ var batteryArray= [];
 var cyborgArray= [];
 var gunArray = [];
 
-var batteryPic, cyborgGif, gunPic, bkgroundPic,bkMusic;
+var bkgroundPic, runnerPic, batteryPic, cyborgGif, gunPic, floorPic;
 
 var runnerX, runnerY;
 var batteryX,batteryY,numberofBatteries;
@@ -17,25 +17,23 @@ var gunOffScreen = false;
 var cyborgOffScreen = false;
 
 
-var back, guy, floor; //background, character and floor
-
-
 // Player counters
 var points = 0
 var life = 5;
 
 //Preload assets
 function preload(){
-	bkgroundPic = loadGif("images/background.gif");
+  bkgroundPic = loadGif("images/background3.gif");
+  runnerPic = loadGif("images/running.gif");
 	batteryPic = loadImage("images/battery.png");
 	cyborgGif = loadGif("images/cyborg.gif");
 	gunPic = loadImage("images/gun.png");
-	bkMusic = loadSound("sound/backgroundMusic.mp3");
+  //floorPic = loadImage("images/floor.gif");
+
+	//load sound files here
+  bkMusic = loadSound("sound/backgroundMusic.mp3");
 	scored = loadSound("sound/score.mp3");
-    
-    back = loadGif("images/background3.gif");
-    
-    guy = loadGif("images/running.gif");
+
 }
 
 function setup(){
