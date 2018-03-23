@@ -73,8 +73,7 @@ function draw() {
 
   //image(floor, 0, 630);
   tempRunner.display();
-  tempRunner.keyPressed();
-
+  keyPressed();
 
 
   // //Display and update each battery object
