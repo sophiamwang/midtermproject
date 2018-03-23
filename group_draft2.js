@@ -1,20 +1,20 @@
 //this is the group javascript file
 var batteryArray= [];
-var cyborgArray= [];
+var obstaclesArray= [];
 var gunArray = [];
 
-var bkgroundPic, runnerPic, batteryPic, cyborgGif, gunPic, floorPic,dodgePic,jumpPic;
+var bkgroundPic, runnerPic, batteryPic, gunPic, floorPic,dodgePic,jumpPic,obstacle1Pic,obstacle2Pic,obstacle3Pic,obstacle4Pic;
 
 var runnerX, runnerY;
 var batteryX,batteryY,numberofBatteries;
 var gunX, gunY, numberofGuns;
-var cyborgX,cyborgY, numberofCyborgs;
+var obstacleX,obstacleY, numberofObstacles;
 
 var ground = 400; //Pixel height of the ground
-var speed = 3; //Speed at which the ground, batteries, and cyborg will move
+var speed = 3; //Speed at which the ground, batteries, and obstacle will move
 var batteryOffScreen = false;
 var gunOffScreen = false;
-var cyborgOffScreen = false;
+var obstacleOffScreen = false;
 
 
 // Player counters
@@ -28,22 +28,24 @@ function preload(){
 	dodgePic = loadGif("images/jump.gif");
 	jumpPic = loadGif("images/dodge.gif"); 
 	batteryPic = loadImage("images/battery.png");
-	cyborgGif = loadGif("images/cyborg.gif");
 	gunPic = loadImage("images/gun.png");
 	//floorPic = loadImage("images/floor.gif");
-
+	//load all obstacle pics
 	//load sound files here
 	bkMusic = loadSound("sound/backgroundMusic.mp3");
 	scored = loadSound("sound/score.mp3");
 	}
 
 function setup(){
+	
 	// if width of screen.. canvas size
 	createCanvas(1500, 900);
 	numberofBatteries = int(random(1,4));
 	numberofGuns = int(random(1,3));
-	numberofCyborgs = int(random(1,2));
-
+	numberofObstacles = int(random(1,2));
+	
+	bkMusic.play();
+	
 	//Instantiate battery ovjects
 	for (var i = 0; i<numberofBatteries; i++) {
 		//changed x position to random(100,width-20) because we should leave space for runner
@@ -67,7 +69,7 @@ function setup(){
 
 
 function draw() {
-	background(0);
+     background(0);
     
     image(back, 10, -100, 1300, 850);
     
@@ -130,12 +132,13 @@ function draw() {
 
 }
 
+
 /*
 add class Runner here
 
 	//if lifes == 0, game over
 */
-
+/*
 class Batteries {
 	constructor(x,y){
 		this.x = x;
@@ -205,7 +208,7 @@ class Guns{
   	 return gunOffScreen;
 }
 
-class Cyborgs{
+class obstacles{
 	constructor (x,y) {
 		this.x = x;
 		this.y = y;
@@ -239,5 +242,6 @@ class Cyborgs{
     return cyborgOffScreen;
   }
 }
+*/
 
 
