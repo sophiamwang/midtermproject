@@ -3,7 +3,7 @@ var batteryArray= [];
 var cyborgArray= [];
 var gunArray = [];
 
-var bkgroundPic, runnerPic, batteryPic, cyborgGif, gunPic, floorPic;
+var bkgroundPic, runnerPic, batteryPic, cyborgGif, gunPic, floorPic,dodgePic,jumpPic;
 
 var runnerX, runnerY;
 var batteryX,batteryY,numberofBatteries;
@@ -25,6 +25,8 @@ var life = 5;
 function preload(){
   bkgroundPic = loadGif("images/background3.gif");
   runnerPic = loadGif("images/running.gif");
+    dodgePic = loadGif("images/jump.gif")
+    jumpPic = loadGif("images/dodge.gif") 
 	batteryPic = loadImage("images/battery.png");
 	cyborgGif = loadGif("images/cyborg.gif");
 	gunPic = loadImage("images/gun.png");
@@ -72,7 +74,7 @@ function draw() {
     
     //image(floor, 0, 630);
     
-    image(guy, 0, 400, 315, 300);
+    image(runnerPic, 0, 400, 315, 300);
     
 	//image(bkgroundPic, 0, 0);
 
