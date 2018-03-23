@@ -73,7 +73,7 @@ function draw() {
 
   //image(floor, 0, 630);
   tempRunner.display();
-  tempRunner.checkPress();
+  tempRunner.keyPressed();
 
 
 
