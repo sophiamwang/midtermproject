@@ -1,18 +1,15 @@
 //this is the group javascript file
-var batteryArray= [];
 var obstaclesArray= [];
 var gunArray = [];
 
-var bkgroundPic, runnerPic, batteryPic, gunPic, floorPic,dodgePic,jumpPic,obstacle1Pic,obstacle2Pic,obstacle3Pic,obstacle4Pic;
+var bkgroundPic, runnerPic, , gunPic, floorPic,dodgePic,jumpPic,obstacle1Pic,obstacle2Pic,obstacle3Pic,obstacle4Pic;
 
 var runnerX, runnerY;
-var batteryX,batteryY,numberofBatteries;
 var gunX, gunY, numberofGuns;
 var obstacleX,obstacleY, numberofObstacles;
 
 var ground = 400; //Pixel height of the ground
 var speed = 3; //Speed at which the ground, batteries, and obstacle will move
-var batteryOffScreen = false;
 var gunOffScreen = false;
 var obstacleOffScreen = false;
 
