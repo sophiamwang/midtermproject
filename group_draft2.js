@@ -8,6 +8,7 @@ var runnerX, runnerY;
 var gunX, gunY, numberofGuns;
 var obstacleX,obstacleY, numberofObstacles;
 
+var frames = 0;
 var ground = 400; //Pixel height of the ground
 var speed = 3; //Speed at which the ground, batteries, and obstacle will move
 // var gunOffScreen = false;
@@ -222,3 +223,50 @@ class obstacles{
   }
 }
 */
+class runner (){
+	constructor(x,y) {
+		this.runnerX = x;
+		this.runnerX = y;
+		this.state = 0;
+	}
+	display(){
+		if (this.state = 0){
+			//if running
+			image(runnerPic,this.x,this.y,315,300);
+		}
+		else if (this.state = 1) {
+			//if jumping
+			image(jumpPic,this.x,this.y,315,300);
+		}
+		else if (this.state = 2) {
+			//if dodge
+			image(dodgePic,this.x,this.y,315,300);
+		}
+	}
+	checkPress() {
+		this.press = keyPressed(){
+			if (value==23){
+				//w = jump
+				frames = 0;
+				this.state=1;
+				frames+=1;
+				if (frames==8) {
+					this.state=0;
+				}
+
+			}
+			else if (value ==19) {
+				//s = dodge
+				frames=0;
+				this.state = 2;
+				frames+=1;
+				if (frames==6){
+					this.state=0;
+				}
+
+
+			}
+		}
+	}
+}
+
