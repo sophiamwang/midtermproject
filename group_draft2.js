@@ -245,7 +245,7 @@ class runner{
 	}
 }
 function keyPressed(){
-	if (value==23){
+	if (keyCode==23){
 		//w = jump
 		frames = 0;
 		tempRunner.state=1;
@@ -255,7 +255,7 @@ function keyPressed(){
 		}
 
 	}
-	else if (value ==19) {
+	else if (keyCode ==19) {
 		//s = dodge
 		frames=0;
 		tempRunner.state = 2;
