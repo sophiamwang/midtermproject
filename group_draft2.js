@@ -23,20 +23,19 @@ var life = 5;
 
 //Preload assets
 function preload(){
-  bkgroundPic = loadGif("images/background3.gif");
-  runnerPic = loadGif("images/running.gif");
-    dodgePic = loadGif("images/jump.gif")
-    jumpPic = loadGif("images/dodge.gif") 
+	bkgroundPic = loadGif("images/background3.gif");
+	runnerPic = loadGif("images/running.gif");
+	dodgePic = loadGif("images/jump.gif");
+	jumpPic = loadGif("images/dodge.gif"); 
 	batteryPic = loadImage("images/battery.png");
 	cyborgGif = loadGif("images/cyborg.gif");
 	gunPic = loadImage("images/gun.png");
-  //floorPic = loadImage("images/floor.gif");
+	//floorPic = loadImage("images/floor.gif");
 
 	//load sound files here
-  bkMusic = loadSound("sound/backgroundMusic.mp3");
+	bkMusic = loadSound("sound/backgroundMusic.mp3");
 	scored = loadSound("sound/score.mp3");
-
-}
+	}
 
 function setup(){
 	// if width of screen.. canvas size
