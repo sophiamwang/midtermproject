@@ -224,7 +224,7 @@ class obstacles{
   }
 }
 */
-class runner(){
+class runner{
 	constructor(x,y) {
 		this.runnerX = x;
 		this.runnerX = y;
