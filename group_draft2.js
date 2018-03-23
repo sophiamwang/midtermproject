@@ -245,7 +245,7 @@ class runner{
 		}
 	}
 	checkPress() {
-		this.press = keyPressed(){
+		this.press = function keyPressed(){
 			if (value==23){
 				//w = jump
 				frames = 0;
@@ -268,6 +268,7 @@ class runner{
 
 			}
 		}
+		this.press();
 	}
 }
 
