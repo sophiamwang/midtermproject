@@ -227,7 +227,7 @@ class runner{
 		this.runnerX = x;
 		this.runnerX = y;
 		this.state = 0;
-		this.pic = pic;
+		this.pic = "";
 	}
 	display(){
 		image(this.pic,this.x,this.y,315,300);
