@@ -4,7 +4,7 @@ var gunArray = [];
 
 var bkgroundPic, runnerPic, gunPic, floorPic,dodgePic,jumpPic,obstacle1Pic,obstacle2Pic,obstacle3Pic,obstacle4Pic;
 
-var runnerX, runnerY;
+var tempRunner,runnerX, runnerY;
 var gunX, gunY, numberofGuns;
 var obstacleX,obstacleY, numberofObstacles;
 
@@ -43,7 +43,7 @@ function setup(){
   // numberofObstacles = int(random(1,2));
 
   bkMusic.play();
-  var tempRunner = new runner(200,ground);
+  tempRunner = new runner(200,ground);
   // //Instantiate battery ovjects
   // for (var i = 0; i<numberofBatteries; i++) {
   //   //changed x position to random(100,width-20) because we should leave space for runner
