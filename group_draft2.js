@@ -2,7 +2,7 @@
 var obstaclesArray= [];
 var gunArray = [];
 
-var bkgroundPic, runnerPic, , gunPic, floorPic,dodgePic,jumpPic,obstacle1Pic,obstacle2Pic,obstacle3Pic,obstacle4Pic;
+var bkgroundPic, runnerPic,gunPic, floorPic,dodgePic,jumpPic,obstacle1Pic,obstacle2Pic,obstacle3Pic,obstacle4Pic;
 
 var runnerX, runnerY;
 var gunX, gunY, numberofGuns;
