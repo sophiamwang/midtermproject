@@ -43,7 +43,7 @@ function setup(){
   // numberofObstacles = int(random(1,2));
 
   bkMusic.play();
-
+  var tempRunner = new runner(200,ground);
   // //Instantiate battery ovjects
   // for (var i = 0; i<numberofBatteries; i++) {
   //   //changed x position to random(100,width-20) because we should leave space for runner
@@ -72,8 +72,9 @@ function draw() {
   image(bkgroundPic, 10, -100, 1300, 850);
 
   //image(floor, 0, 630);
+  tempRunner.display();
+  tempRunner.checkPress();
 
-  image(runnerPic, 200, ground, 315, 300);
 
 
   // //Display and update each battery object
