@@ -1,7 +1,7 @@
 //this is the group javascript file
 var obstaclesArray= [];
 var gunArray = [];
-
+var pic;
 var bkgroundPic, runnerPic, gunPic, floorPic,dodgePic,jumpPic,obstacle1Pic,obstacle2Pic,obstacle3Pic,obstacle4Pic;
 
 var tempRunner,runnerX, runnerY;
