@@ -224,7 +224,7 @@ class obstacles{
 }
 */
 class runner{
-	constructor(x,y,state) {
+	constructor(x,y) {
 		this.runnerX = x;
 		this.runnerX = y;
 		this.state = state;
@@ -243,25 +243,26 @@ class runner{
 			image(dodgePic,this.x,this.y,315,300);
 		}
 	}
-}
-function keyPressed(){
-	if (keyCode==23){
-		//w = jump
-		frames = 0;
-		tempRunner.state=1;
-		frames+=1;
-		if (frames==8) {
-			tempRunner.state=0;
-		}
+	
+	keyPressed(){
+		if (keyCode==23){
+			//w = jump
+			frames = 0;
+			this.state=1;
+			frames+=1;
+			if (frames==8) {
+				this.state=0;
+			}
 
-	}
-	else if (keyCode ==19) {
-		//s = dodge
-		frames=0;
-		tempRunner.state = 2;
-		frames+=1;
-		if (frames==6){
-			tempRunner.state=0;
+		}
+		else if (keyCode ==19) {
+			//s = dodge
+			frames=0;
+			this.state = 2;
+			frames+=1;
+			if (frames==6){
+				this.state=0;
+			}
 		}
 	}
 }
