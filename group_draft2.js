@@ -17,6 +17,9 @@ var gunOffScreen = false;
 var cyborgOffScreen = false;
 
 
+var back, guy, floor; //background, character and floor
+
+
 // Player counters
 var points = 0
 var life = 5;
@@ -28,12 +31,16 @@ function preload(){
 	cyborgGif = loadGif("images/cyborg.gif");
 	gunPic = loadImage("images/gun.png");
 	//load sound files here
-	scored = loadSound("sound/score.mp3")
+	scored = loadSound("sound/score.mp3");
+    
+    back = loadGif("images/background3.gif");
+    
+    guy = loadGif("images/running.gif");
 }
 
 function setup(){
 	// if width of screen.. canvas size
-	createCanvas(700, 400);
+	createCanvas(1500, 900);
 	numberofBatteries = int(random(1,4));
 	numberofGuns = int(random(1,3));
 	numberofCyborgs = int(random(1,2));
@@ -62,7 +69,14 @@ function setup(){
 
 function draw() {
 	background(0);
-	image(bkgroundPic, 0, 0);
+    
+    image(back, 10, -100, 1300, 850);
+    
+    //image(floor, 0, 630);
+    
+    image(guy, 0, 400, 315, 300);
+    
+	//image(bkgroundPic, 0, 0);
 
 	fill(0);
 	rectMode(CORNER);
