@@ -43,7 +43,7 @@ function setup(){
   // numberofObstacles = int(random(1,2));
 
   bkMusic.play();
-  tempRunner = new runner(200,ground);
+  tempRunner = new runner(200,ground,0);
   // //Instantiate battery ovjects
   // for (var i = 0; i<numberofBatteries; i++) {
   //   //changed x position to random(100,width-20) because we should leave space for runner
@@ -225,10 +225,10 @@ class obstacles{
 }
 */
 class runner{
-	constructor(x,y) {
+	constructor(x,y,state) {
 		this.runnerX = x;
 		this.runnerX = y;
-		this.state = 0;
+		this.state = state;
 	}
 	display(){
 		if (this.state = 0){
@@ -244,26 +244,26 @@ class runner{
 			image(dodgePic,this.x,this.y,315,300);
 		}
 	}
-
-	keyPressed(){
-		if (value==23){
-			//w = jump
-			frames = 0;
-			this.state=1;
-			frames+=1;
-			if (frames==8) {
-				this.state=0;
-			}
-
+}
+function keyPressed(){
+	if (value==23){
+		//w = jump
+		frames = 0;
+		tempRunner.state=1;
+		frames+=1;
+		if (frames==8) {
+			tempRunner.state=0;
 		}
-		else if (value ==19) {
-			//s = dodge
-			frames=0;
-			this.state = 2;
-			frames+=1;
-			if (frames==6){
-				this.state=0;
-			}
+
+	}
+	else if (value ==19) {
+		//s = dodge
+		frames=0;
+		tempRunner.state = 2;
+		frames+=1;
+		if (frames==6){
+			tempRunner.state=0;
 		}
 	}
+}
 }
