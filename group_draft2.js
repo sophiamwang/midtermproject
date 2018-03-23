@@ -8,8 +8,8 @@ var runnerX, runnerY;
 var gunX, gunY, numberofGuns;
 var obstacleX,obstacleY, numberofObstacles;
 
-// var ground = 400; //Pixel height of the ground
-// var speed = 3; //Speed at which the ground, batteries, and obstacle will move
+var ground = 400; //Pixel height of the ground
+var speed = 3; //Speed at which the ground, batteries, and obstacle will move
 // var gunOffScreen = false;
 // var obstacleOffScreen = false;
 
@@ -72,7 +72,7 @@ function draw() {
 
   //image(floor, 0, 630);
 
-  image(runnerPic, 0, 400, 315, 300);
+  image(runnerPic, 200, ground, 315, 300);
 
 
   // //Display and update each battery object
