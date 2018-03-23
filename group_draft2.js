@@ -230,7 +230,6 @@ class runner{
 		this.pic = "";
 	}
 	display(){
-		image(this.pic,this.x,this.y,315,300);
 		if (this.state=0) {
 			//running
 			this.pic = runnerPic;
@@ -243,7 +242,7 @@ class runner{
 			//dodging
 			this.pic = dodgePic;
 		}
-		
+		image(this.pic,this.x,this.y,315,300);
 	}
 	isRun(){
 		return this.state==0;
