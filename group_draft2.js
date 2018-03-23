@@ -244,31 +244,26 @@ class runner{
 			image(dodgePic,this.x,this.y,315,300);
 		}
 	}
-	checkPress() {
-		this.press = function keyPressed(){
-			if (value==23){
-				//w = jump
-				frames = 0;
-				this.state=1;
-				frames+=1;
-				if (frames==8) {
-					this.state=0;
-				}
 
+	keyPressed(){
+		if (value==23){
+			//w = jump
+			frames = 0;
+			this.state=1;
+			frames+=1;
+			if (frames==8) {
+				this.state=0;
 			}
-			else if (value ==19) {
-				//s = dodge
-				frames=0;
-				this.state = 2;
-				frames+=1;
-				if (frames==6){
-					this.state=0;
-				}
 
-
+		}
+		else if (value ==19) {
+			//s = dodge
+			frames=0;
+			this.state = 2;
+			frames+=1;
+			if (frames==6){
+				this.state=0;
 			}
 		}
-		this.press();
 	}
 }
-
