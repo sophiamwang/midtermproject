@@ -43,7 +43,7 @@ function setup(){
   // numberofObstacles = int(random(1,2));
 
   bkMusic.play();
-  tempRunner = new runner(200,ground,0);
+  tempRunner = new runner(200,ground);
   // //Instantiate battery ovjects
   // for (var i = 0; i<numberofBatteries; i++) {
   //   //changed x position to random(100,width-20) because we should leave space for runner
@@ -74,7 +74,6 @@ function draw() {
   //image(floor, 0, 630);
   tempRunner.display();
   keyPressed();
-
 
   // //Display and update each battery object
   // for (var i=0; i<batteryArray.length;i++) {
@@ -223,47 +222,59 @@ class obstacles{
   }
 }
 */
-class runner{
+class runner (){
 	constructor(x,y) {
 		this.runnerX = x;
 		this.runnerX = y;
-		this.state = state;
+		this.state = 0;
+		this.pic = pic;
 	}
 	display(){
-		if (this.state = 0){
-			//if running
-			image(runnerPic,this.x,this.y,315,300);
+		image(this.pic,this.x,this.y,315,300);
+		if (this.state=0) {
+			//running
+			this.pic = runnerPic;
 		}
-		else if (this.state = 1) {
-			//if jumping
-			image(jumpPic,this.x,this.y,315,300);
+		else if (this.state=1){
+			//jumping
+			this.pic = jumpPic;
 		}
-		else if (this.state = 2) {
-			//if dodge
-			image(dodgePic,this.x,this.y,315,300);
+		else if (this.state=2){
+			//dodging
+			this.pic = dodgePic;
 		}
+		
+	}
+	isRun(){
+		return this.state==0;
+	}
+	isJump(){
+		return this.state==1;
+	}
+	isDodge(){
+		return this.state==2;
 	}
 	
-	keyPressed(){
-		if (keyCode==23){
-			//w = jump
-			frames = 0;
-			this.state=1;
-			frames+=1;
-			if (frames==8) {
-				this.state=0;
-			}
+}
 
+function keyPressed() {
+	if (keyCode==23){
+		//w = jump
+		frames = 0;
+		tempRunner.isJump();
+		frames+=1;
+		if (frames==8) {
+			tempRunner.isRun();
 		}
-		else if (keyCode ==19) {
-			//s = dodge
-			frames=0;
-			this.state = 2;
-			frames+=1;
-			if (frames==6){
-				this.state=0;
-			}
+
+	}
+	else if (keyCode ==19) {
+		//s = dodge
+		frames=0;
+		tempRunner.isDodge();
+		frames+=1;
+		if (frames==6){
+			tempRunner.isRun();
 		}
 	}
 }
-
