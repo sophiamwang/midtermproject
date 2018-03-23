@@ -3,7 +3,7 @@ var batteryArray= [];
 var cyborgArray= [];
 var gunArray = [];
 
-var batteryPic, cyborgGif, gunPic, bkgroundPic;
+var batteryPic, cyborgGif, gunPic, bkgroundPic,bkMusic;
 
 var runnerX, runnerY;
 var batteryX,batteryY,numberofBatteries;
@@ -30,7 +30,7 @@ function preload(){
 	batteryPic = loadImage("images/battery.png");
 	cyborgGif = loadGif("images/cyborg.gif");
 	gunPic = loadImage("images/gun.png");
-	//load sound files here
+	bkMusic = loadSound("sound/backgroundMusic.mp3");
 	scored = loadSound("sound/score.mp3");
     
     back = loadGif("images/background3.gif");
