@@ -37,7 +37,7 @@ function preload(){
 function setup(){
 
   // if width of screen.. canvas size
-  createCanvas(1500, 900);
+  createCanvas(1500, 843);
   // numberofBatteries = int(random(1,4));
   // numberofGuns = int(random(1,3));
   // numberofObstacles = int(random(1,2));
