@@ -229,6 +229,7 @@ class runner{
 		this.pic = runnerPic;
 	}
 	display(){
+		console.log("displayed");
 		if (this.state==0) {
 			//running
 			this.pic = runnerPic;
@@ -242,6 +243,7 @@ class runner{
 			this.pic = dodgePic;
 		}
 		image(this.pic,this.runnerX,this.runnerY,315,300);
+		console.log(this.pic.width);
 	}
 	isRun(){
 		return this.state==0;
