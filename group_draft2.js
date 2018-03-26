@@ -35,8 +35,8 @@ function preload(){
 }
 
 function setup(){
-  console.log(totalFrames(dodgePic));
-console.log(totalFrames(jumpPic));
+  console.log(dodgePic.totalFrames());
+console.log(jumpPic.totalFrames());
   // if width of screen.. canvas size
   createCanvas(1500, 843);
   // numberofBatteries = int(random(1,4));
