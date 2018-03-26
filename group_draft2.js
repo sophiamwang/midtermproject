@@ -258,7 +258,7 @@ class runner{
 }
 
 function keyPressed() {
-	if (keyCode==23){
+	if (keyCode==87){
 		//w = jump
 		frames = 0;
 		tempRunner.isJump();
@@ -268,7 +268,7 @@ function keyPressed() {
 		}
 
 	}
-	else if (keyCode =19) {
+	else if (keyCode==83) {
 		//s = dodge
 		frames=0;
 		tempRunner.isDodge();
