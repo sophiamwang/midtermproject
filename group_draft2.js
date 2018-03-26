@@ -262,21 +262,21 @@ class runner{
 function keyPressed() {
 	if (keyCode==87){
 		//w = jump
-		frames = 0;
+// 		frames = 0;
 		tempRunner.isJump();
-		frames+=1;
-		if (frames>=8) {
-			tempRunner.isRun();
+// 		frames+=1;
+// 		if (frames>=8) {
+// 			tempRunner.isRun();
 		}
 
 	}
 	else if (keyCode==83) {
 		//s = dodge
-		frames=0;
+// 		frames=0;
 		tempRunner.isDodge();
-		frames+=1;
-		if (frames>=6){
-			tempRunner.isRun();
-		}
+// 		frames+=1;
+// 		if (frames>=6){
+// 			tempRunner.isRun();
+// 		}
 	}
 }
