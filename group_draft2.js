@@ -44,6 +44,7 @@ function setup(){
 
   bkMusic.play();
   tempRunner = new runner(200,ground);
+	
   // //Instantiate battery ovjects
   // for (var i = 0; i<numberofBatteries; i++) {
   //   //changed x position to random(100,width-20) because we should leave space for runner
@@ -72,7 +73,8 @@ function draw() {
   image(bkgroundPic, 10, -100, 1500, 843);
 
   //image(floor, 0, 630);
-  tempRunner.display();
+  tempRunner.display();	
+   tempRunner.update();
 
   // //Display and update each battery object
   // for (var i=0; i<batteryArray.length;i++) {
@@ -252,6 +254,8 @@ class runner{
 		}
 		else {
 		 this.state = 0};
+	}
+}
 		
 
 // 	isRun(){
@@ -268,7 +272,6 @@ class runner{
 // 	}
 	
 	
-}
 
 // function keyPressed() {
 // 	if (keyCode==87){
