@@ -254,11 +254,11 @@ class Runner{
 function keyPressed() {
   if (keyCode === 87) {
 	//w = jump = 7
-    for (frames = 0; frames < 130;frames++){
-	 pic = jumpPic;
-	  console.log("loop!!");
-    }
-     pic = runnerPic; 
+//     for (frames = 0; frames < 130;frames++){
+// 	 pic = jumpPic;
+// 	 console.log("loop!!");
+//     }
+     pic = jumpPic; 
   } 
   else if (keyCode === 83) {
     pic = dodgePic;
