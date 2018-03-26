@@ -227,87 +227,50 @@ class runner{
 	constructor(x,y) {
 		this.runnerX = x;
 		this.runnerX = y;
-		this.state = 0;
+		this.isRun();
+		this.isJump();
+		this.isDodge();
 		this.pic = runnerPic;
 	}
-	display(){
-		console.log("displayed");
-		if (this.state==0) {
-			//running
-			this.pic = runnerPic;
-		}
-		else if (this.state==1){
-			//jumping
-			this.pic = jumpPic;
-		}
-		else if (this.state==2){
-			//dodging
-			this.pic = dodgePic;
-		}
-		image(this.pic,200,400,400,400);
-	}
-	update(){
-		if(keyIsDown(87)) {
-			//W jump frames 7
-			frames =0;
-			this.state = 1;
-			frames+=1;
-			if (frames >= 50) {
-				this.state=0;
-			}
-			else {
-				this.state=1;}
-		
-		}
-		else if(keyIsDown(83)) {
-			// S dodge frame 5
-			  frames=0;
-			this.state=2;
-			frames+=1;
-			if(frames>=50){
-				this.state=0;
-			}
-			else {
-				this.state=0;}
-			
-		}
-	}
-}
-		
-
-// 	isRun(){
-// 		return this.state==0;
-// 		console.log("run");
-// 	}
-// 	isJump(){
-// 		return this.state==1;
-// 		console.log("jump");
-// 	}
-// 	isDodge(){
-// 		return this.state==2;
-// 		console.log("dodge");
-// 	}
-	
-	
-
-// function keyPressed() {
-// 	if (keyCode==87){
-// 		//w = jump
-// // 		frames = 0;
-// 		tempRunner.isJump();
-// // 		frames+=1;
-// // 		if (frames>=8) {
-// // 			tempRunner.isRun();
+// 	display(){
+// 		console.log("displayed");
+// 		if (this.state==0) {
+// 			//running
+// 			this.pic = runnerPic;
 // 		}
-
+// 		else if (this.state==1){
+// 			//jumping
+// 			this.pic = jumpPic;
+// 		}
+// 		else if (this.state==2){
+// 			//dodging
+// 			this.pic = dodgePic;
+// 		}
+// 		image(this.pic,200,400,400,400);
 // 	}
-// 	else if (keyCode==83) {
-// 		//s = dodge
-// // 		frames=0;
-// 		tempRunner.isDodge();
-// // 		frames+=1;
-// // 		if (frames>=6){
-// // 			tempRunner.isRun();
-// // 		}
-// 	}
-// }
+	
+	isRun(){
+		return this.state==0;
+		console.log("run");
+		this.pic = runnerPic;
+	}
+	isJump(){
+		return this.state==1;
+		console.log("jump");
+		this.pic = jumpPic;
+	}
+	isDodge(){
+		return this.state==2;
+		console.log("dodge");
+		this.pic = dodgePic;
+	}
+	
+	
+}
+function keyPressed() {
+  if (keyCode === 87) {
+    tempRunner.pic = jumpPic;
+  } else if (keyCode === 83) {
+    tempRunner.pic = dodgePic;
+  }
+}
