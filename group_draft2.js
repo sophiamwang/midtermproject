@@ -252,7 +252,7 @@ class runner{
 			frames =0;
 			this.state = 1;
 			frames+=1;
-			if (frames >= 7) {
+			if (frames >= 50) {
 				this.state=0;
 			}
 			else {
@@ -264,11 +264,11 @@ class runner{
 			  frames=0;
 			this.state=2;
 			frames+=1;
-			if(frames>=5){
+			if(frames>=50){
 				this.state=0;
 			}
 			else {
-				this.state=1;}
+				this.state=0;}
 			
 		}
 	}
