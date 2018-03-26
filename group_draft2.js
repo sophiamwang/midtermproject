@@ -43,7 +43,7 @@ function setup(){
   // numberofObstacles = int(random(1,2));
 
   bkMusic.play();
-  tempRunner = new runner(200,ground);
+  tempRunner = new Runner(200,ground);
 	
   // //Instantiate battery ovjects
   // for (var i = 0; i<numberofBatteries; i++) {
@@ -74,7 +74,6 @@ function draw() {
 
   //image(floor, 0, 630);
   tempRunner.display();	
-   tempRunner.update();
 
   // //Display and update each battery object
   // for (var i=0; i<batteryArray.length;i++) {
@@ -223,10 +222,10 @@ class obstacles{
   }
 }
 */
-class runner{
+class Runner{
 	constructor(x,y) {
-		this.runnerX = x;
-		this.runnerX = y;
+		this.x = runnerX;
+		this.y = runnerY;
 		this.isRun();
 		this.isJump();
 		this.isDodge();
