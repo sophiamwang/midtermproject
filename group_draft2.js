@@ -260,7 +260,7 @@ function keyPressed() {
     for (frames = 0; frames < 7;frames++){
 	 pic = jumpPic;
     }
-     pic = runPic; 
+     pic = runningPic; 
   } 
   else if (keyCode === 83) {
     pic = dodgePic;
