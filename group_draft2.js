@@ -227,30 +227,27 @@ class Runner{
 	constructor(x,y) {
 		this.x = runnerX;
 		this.y = runnerY;
-		this.isRun();
-		this.isJump();
-		this.isDodge();
 		pic = runnerPic;
 	}
 	display(){
 		image(pic,200,400);
 	}
 
-		isRun(){
-			return this.state==0;
-			console.log("run");
-			pic = runnerPic;
-		}
-		isJump(){
-			return this.state==1;
-			console.log("jump");
-			this.pic = jumpPic;
-		}
-		isDodge(){
-			return this.state==2;
-			console.log("dodge");
-			this.pic = dodgePic;
-		}
+// 	isRun(){
+// 		return this.state==0;
+// 		console.log("run");
+// 		pic = runnerPic;
+// 	}
+// 	isJump(){
+// 		return this.state==1;
+// 		console.log("jump");
+// 		this.pic = jumpPic;
+// 	}
+// 	isDodge(){
+// 		return this.state==2;
+// 		console.log("dodge");
+// 		this.pic = dodgePic;
+// 	}
 
 	
 }
