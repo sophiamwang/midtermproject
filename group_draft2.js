@@ -247,12 +247,15 @@ class runner{
 	}
 	isRun(){
 		return this.state==0;
+		console.log("run");
 	}
 	isJump(){
 		return this.state==1;
+		console.log("jump");
 	}
 	isDodge(){
 		return this.state==2;
+		console.log("dodge");
 	}
 	
 }
