@@ -230,47 +230,34 @@ class runner{
 		this.isRun();
 		this.isJump();
 		this.isDodge();
-		this.pic = runnerPic;
+		pic = runnerPic;
 	}
-// 	display(){
-// 		console.log("displayed");
-// 		if (this.state==0) {
-// 			//running
-// 			this.pic = runnerPic;
-// 		}
-// 		else if (this.state==1){
-// 			//jumping
-// 			this.pic = jumpPic;
-// 		}
-// 		else if (this.state==2){
-// 			//dodging
-// 			this.pic = dodgePic;
-// 		}
-// 		image(this.pic,200,400,400,400);
-// 	}
-	
-	isRun(){
-		return this.state==0;
-		console.log("run");
-		this.pic = runnerPic;
+	display(){
+		image(pic,200,400);
 	}
-	isJump(){
-		return this.state==1;
-		console.log("jump");
-		this.pic = jumpPic;
-	}
-	isDodge(){
-		return this.state==2;
-		console.log("dodge");
-		this.pic = dodgePic;
-	}
-	
+
+		isRun(){
+			return this.state==0;
+			console.log("run");
+			pic = runnerPic;
+		}
+		isJump(){
+			return this.state==1;
+			console.log("jump");
+			this.pic = jumpPic;
+		}
+		isDodge(){
+			return this.state==2;
+			console.log("dodge");
+			this.pic = dodgePic;
+		}
+
 	
 }
 function keyPressed() {
   if (keyCode === 87) {
-    tempRunner.pic = jumpPic;
+    pic = jumpPic;
   } else if (keyCode === 83) {
-    tempRunner.pic = dodgePic;
+    pic = dodgePic;
   }
 }
