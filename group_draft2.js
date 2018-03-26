@@ -244,39 +244,50 @@ class runner{
 		}
 		image(this.pic,200,400,400,400);
 	}
-	isRun(){
-		return this.state==0;
-		console.log("run");
-	}
-	isJump(){
-		return this.state==1;
-		console.log("jump");
-	}
-	isDodge(){
-		return this.state==2;
-		console.log("dodge");
-	}
+	update(){
+		if(keyIsDown(87)) {
+		   this.state = 1;}
+		else if(keyIsDown(83)) {
+		   this.state=2;
+		}
+		else {
+		 this.state = 0};
+		
+
+// 	isRun(){
+// 		return this.state==0;
+// 		console.log("run");
+// 	}
+// 	isJump(){
+// 		return this.state==1;
+// 		console.log("jump");
+// 	}
+// 	isDodge(){
+// 		return this.state==2;
+// 		console.log("dodge");
+// 	}
+	
 	
 }
 
-function keyPressed() {
-	if (keyCode==87){
-		//w = jump
-// 		frames = 0;
-		tempRunner.isJump();
-// 		frames+=1;
-// 		if (frames>=8) {
-// 			tempRunner.isRun();
-		}
-
-	}
-	else if (keyCode==83) {
-		//s = dodge
-// 		frames=0;
-		tempRunner.isDodge();
-// 		frames+=1;
-// 		if (frames>=6){
-// 			tempRunner.isRun();
+// function keyPressed() {
+// 	if (keyCode==87){
+// 		//w = jump
+// // 		frames = 0;
+// 		tempRunner.isJump();
+// // 		frames+=1;
+// // 		if (frames>=8) {
+// // 			tempRunner.isRun();
 // 		}
-	}
-}
+
+// 	}
+// 	else if (keyCode==83) {
+// 		//s = dodge
+// // 		frames=0;
+// 		tempRunner.isDodge();
+// // 		frames+=1;
+// // 		if (frames>=6){
+// // 			tempRunner.isRun();
+// // 		}
+// 	}
+// }
