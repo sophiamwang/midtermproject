@@ -69,7 +69,7 @@ function setup(){
 function draw() {
   background(0);
 
-  image(bkgroundPic, 10, -100, 1300, 850);
+  image(bkgroundPic, 10, -100, 1500, 843);
 
   //image(floor, 0, 630);
   tempRunner.display();
