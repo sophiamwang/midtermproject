@@ -35,7 +35,8 @@ function preload(){
 }
 
 function setup(){
-
+  console.log(totalFrames(dodgePic));
+console.log(totalFrames(jumpPic));
   // if width of screen.. canvas size
   createCanvas(1500, 843);
   // numberofBatteries = int(random(1,4));
@@ -255,6 +256,7 @@ class Runner{
 }
 function keyPressed() {
   if (keyCode === 87) {
+    
     pic = jumpPic;
   } else if (keyCode === 83) {
     pic = dodgePic;
