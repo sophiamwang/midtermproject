@@ -254,7 +254,7 @@ class Runner{
 function keyPressed() {
   if (keyCode === 87) {
 	//w = jump = 7
-    for (frames = 0; frames < 30;frames++){
+    for (frames = 0; frames < 130;frames++){
 	 pic = jumpPic;
 	  console.log("loop!!");
     }
