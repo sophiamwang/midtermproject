@@ -248,12 +248,29 @@ class runner{
 	}
 	update(){
 		if(keyIsDown(87)) {
-		   this.state = 1;}
-		else if(keyIsDown(83)) {
-		   this.state=2;
+			//W jump frames 7
+			frames =0;
+			this.state = 1;
+			frames+=1;
+			if (frames >= 7) {
+				this.state=0;
+			}
+			else {
+				this.state=1;}
+		
 		}
-		else {
-		 this.state = 0};
+		else if(keyIsDown(83)) {
+			// S dodge frame 5
+			  frames=0;
+			this.state=2;
+			frames+=1;
+			if(frames>=5){
+				this.state=0;
+			}
+			else {
+				this.state=1;}
+			
+		}
 	}
 }
 		
