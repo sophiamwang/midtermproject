@@ -259,6 +259,7 @@ function keyPressed() {
 	//w = jump = 7
     for (frames = 0; frames < 7;frames++){
 	 pic = jumpPic;
+	  console.log("loop!!");
     }
      pic = runnerPic; 
   } 
