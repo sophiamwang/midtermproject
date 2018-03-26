@@ -241,7 +241,7 @@ class runner{
 			//dodging
 			this.pic = dodgePic;
 		}
-		image(this.pic,this.x,this.y,315,300);
+		image(this.pic,this.runnerX,this.runnerY,315,300);
 	}
 	isRun(){
 		return this.state==0;
