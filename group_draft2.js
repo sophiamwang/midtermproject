@@ -73,7 +73,6 @@ function draw() {
 
   //image(floor, 0, 630);
   tempRunner.display();
-  keyPressed();
 
   // //Display and update each battery object
   // for (var i=0; i<batteryArray.length;i++) {
@@ -227,18 +226,18 @@ class runner{
 		this.runnerX = x;
 		this.runnerX = y;
 		this.state = 0;
-		this.pic = "";
+		this.pic = runnerPic;
 	}
 	display(){
-		if (this.state=0) {
+		if (this.state==0) {
 			//running
 			this.pic = runnerPic;
 		}
-		else if (this.state=1){
+		else if (this.state==1){
 			//jumping
 			this.pic = jumpPic;
 		}
-		else if (this.state=2){
+		else if (this.state==2){
 			//dodging
 			this.pic = dodgePic;
 		}
@@ -262,17 +261,17 @@ function keyPressed() {
 		frames = 0;
 		tempRunner.isJump();
 		frames+=1;
-		if (frames==8) {
+		if (frames>=8) {
 			tempRunner.isRun();
 		}
 
 	}
-	else if (keyCode ==19) {
+	else if (keyCode =19) {
 		//s = dodge
 		frames=0;
 		tempRunner.isDodge();
 		frames+=1;
-		if (frames==6){
+		if (frames>=6){
 			tempRunner.isRun();
 		}
 	}
