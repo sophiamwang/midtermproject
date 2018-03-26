@@ -242,7 +242,7 @@ class runner{
 			//dodging
 			this.pic = dodgePic;
 		}
-		image(this.pic,this.runnerX,this.runnerY,315,300);
+		image(this.pic,this.runnerX,this.runnerY,100,100);
 		console.log(this.pic.width);
 	}
 	isRun(){
