@@ -71,7 +71,7 @@ console.log(jumpPic.totalFrames());
 function draw() {
   background(0);
 	
-console.log(pic.frame());
+console.log(pic.frame(), pic.totalFrames());
 
   image(bkgroundPic, 10, -100, 1500, 843);
 
