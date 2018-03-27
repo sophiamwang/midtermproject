@@ -9,10 +9,10 @@ var gunX, gunY, numberofGuns;
 var obstacleX,obstacleY, numberofObstacles;
 
 var frames = 0;
-var ground = 400; //Pixel height of the ground
+var ground = 570; //Pixel height of the ground
 var speed = 3; //Speed at which the ground, batteries, and obstacle will move
-// var gunOffScreen = false;
-// var obstacleOffScreen = false;
+var gunOffScreen = false;
+var obstacleOffScreen = false;
 
 
 // // Player counters
@@ -35,53 +35,44 @@ function preload(){
 }
 
 function setup(){
-  console.log(dodgePic.totalFrames());
-console.log(jumpPic.totalFrames());
-  // if width of screen.. canvas size
-  createCanvas(1500, 843);
-  // numberofBatteries = int(random(1,4));
-  // numberofGuns = int(random(1,3));
-  // numberofObstacles = int(random(1,2));
+	console.log(dodgePic.totalFrames());
+	console.log(jumpPic.totalFrames());
+	// if width of screen.. canvas size
+	createCanvas(1500, 843);
+	// numberofBatteries = int(random(1,4));
+	numberofGuns = int(random(1,3));
+	// numberofObstacles = int(random(1,2));
 
-  bkMusic.play();
-  tempRunner = new Runner(200,ground);
-	
-  // //Instantiate battery ovjects
-  // for (var i = 0; i<numberofBatteries; i++) {
-  //   //changed x position to random(100,width-20) because we should leave space for runner
-  //   var tempBat = new Batteries(random(100,width-20),ground);
-  //   batteryArray.push(tempBat);
-  // }
-  // //Instantiate gun objects
-  // for (var i = 0; i<numberofGuns; i++) {
-  //   //changed x position to random(100,width-20) because we should leave space for runner
-  //   var tempGun = new Guns(random(100,width-20),ground);
-  //   gunArray.push(tempGun);
-  // }
-  // //Instantiate cyborg objects
-  // for (var i = 0; i <numberofCyborgs;i++) {
-  //   //changed x position to random(150,width-20) because we should leave space for runner
-  //   //and make sure that runner has time to jump over cyborg
-  //   var tempCyborg = new Cyborgs(random(150,width-20,ground));
-  //   cyborgArray.push(tempCyborg);
-  // }
+	bkMusic.play();
+	tempRunner = new Runner(200,ground);
+
+	// //Instantiate battery ovjects
+	// for (var i = 0; i<numberofBatteries; i++) {
+	//   //changed x position to random(100,width-20) because we should leave space for runner
+	//   var tempBat = new Batteries(random(100,width-20),ground);
+	//   batteryArray.push(tempBat);
+	// }
+	//Instantiate gun objects
+	for (var i = 0; i<numberofGuns; i++) {
+	//changed x position to random(100,width-20) because we should leave space for runner
+	var tempGun = new Guns(random(250,width-20),ground);
+	gunArray.push(tempGun);
+	}
+	// //Instantiate cyborg objects
+	// for (var i = 0; i <numberofCyborgs;i++) {
+	//   //changed x position to random(150,width-20) because we should leave space for runner
+	//   //and make sure that runner has time to jump over cyborg
+	//   var tempCyborg = new Cyborgs(random(150,width-20,ground));
+	//   cyborgArray.push(tempCyborg);
+	// }
 }
 
 
 function draw() {
-  background(0);
-	
-console.log(pic.frame(), pic.totalFrames());
-	if (pic.frame() === pic.totalFrames()-1) {
-		pic = runnerPic;
-		pic.frame(0);
-	}
+	background(0);
+	image(bkgroundPic, 10, -100, 1500, 843);
 
-  image(bkgroundPic, 10, -100, 1500, 843);
-
-  //image(floor, 0, 630);
-  tempRunner.display();	
-
+	//image(floor, 0, 630);	
   // //Display and update each battery object
   // for (var i=0; i<batteryArray.length;i++) {
   //   batteryArray[i].display();
@@ -96,32 +87,24 @@ console.log(pic.frame(), pic.totalFrames());
   //   }
   // }
 
-  // //Display and update each gun object
-  // for (var i=0; i<gunArray.length;i++) {
-  //   gunArray[i].display();
-  //   gunArray[i].move();
-  //   gunArray[i].checkCollision(x,y); //check if kouki picks up gun
-
-  //   //When the gun is off screen, add a new gun
-  //   if (gunOffScreen == true) {
-  //     gunArray.splice(i,1);
-  //     var tempGun = new Gun (random(50,width-20), ground);
-  //     gunArray.push(tempGun);
-  //   }
-  // }
-  // //Display and update each cyborg object
-  // for (var i =0; i<cyborgArray.length;i++) {
-  //   cyborgArray[i].display();
-  //   cyborgArray[i].move();
-  //   cyborgArray[i].checkCollision();
-
-  //   //When the cyborg is off screen, add a new cyborg
-  //   if (cyborgOffScreen == true) {
-  //     cyborgArray.splice(i,1);
-  //     var tempCyborg = new cyborgs(random(20,width-20),ground);
-  //     cyborgArray.push(tempCyborg);
-  //   }
-  // }
+  //Display and update each gun object
+	for (var i=0; i<gunArray.length;i++) {
+		gunArray[i].display();
+		gunArray[i].move();
+		gunArray[i].checkCollision(); //check if kouki picks up gun
+		//When the gun is off screen, add a new gun
+		if (gunOffScreen == true) {
+		  gunArray.splice(i,1);
+		  var tempGun = new Guns (random(200,width-20), ground);
+		  gunArray.push(tempGun);
+		}
+	}
+	console.log(pic.frame(), pic.totalFrames());
+	if (pic.frame() === pic.totalFrames()-1) {
+		pic = runnerPic;
+		pic.frame(0);
+	}
+	tempRunner.display();
 
   // // Display hits and misses
   // noStroke();
@@ -136,68 +119,40 @@ console.log(pic.frame(), pic.totalFrames());
 add class Runner here
   //if lifes == 0, game over
 */
-/*
-class Batteries {
-  constructor(x,y){
-    this.x = x;
-    this.y = y;
-  }
-  display() {
-    imageMode(CENTER);
-    image(batteryPic,this.x,this.y,20,40);
-  }
-  move() {
-    this.x -=speed;
-    if (this.x <0) {
-      batteryOffScreen = true;
-    }
-    else {
-      batteryOffScreen = false;
-    }
-    return batteryOffScreen;
-  }
-  // check if the kouki picks up the GUN,
-  checkCollision(x, y) {
-    var distBattery = dist(this.x, this.y, runnerX, runnerY);
-    if (distBattery <= 45) {
-      points += 1;
-      //Play sound effect for point earned
-      scored.play();
-      //Remove battery from array and add a new battery object
-      batteryOffScreen = true;
-    }
-    return batteryOffScreen;
-  }
+
 class Guns{
-  constructor(x,y){
-    this.x = x;
-    this.y = y;
-  }
-  display() {
-    image(gunPic,this.x,this.y, 60, 39);
-  }
-  move() {
-    this.x -=speed;
-    if (this.x <0) {
-      gunOffScreen = true;
-    }
-    else {
-      gunOffScreen = false;
-    }
-    return gunOffScreen;
-  }
-  //check if the kouki picked up the gun
-  checkCollision(x, y) {
-    var distGun = dist(this.x, this.y, runnerX, runnerY);
-    if (distGun<= 45) {
-      points += 1;
-      //Play sound effect for point earned
-      scored.play();
-      //Remove gun from array and add a new gun object
-      gunOffScreen = true;
-    }
-     return gunOffScreen;
+	constructor(x,y){
+		this.x = x;
+		this.y = y;
+	}
+	display() {
+		image(gunPic,this.x,this.y, 100, 60);
+	}
+	move() {
+		this.x -=speed;
+		if (this.x <0) {
+		  gunOffScreen = true;
+		}
+		else {
+		  gunOffScreen = false;
+		}
+		return gunOffScreen;
+	}
+	//check if the kouki picked up the gun
+	checkCollision() {
+		var distGun = dist(this.x, this.y, runnerX, runnerY);
+		if (distGun<= 20) {
+		  points += 1;
+		  //Play sound effect for point earned
+		  scored.play();
+		  //Remove gun from array and add a new gun object
+		  gunOffScreen = true;
+		}
+		 return gunOffScreen;
+	}
 }
+
+/*
 class obstacles{
   constructor (x,y) {
     this.x = x;
@@ -236,27 +191,10 @@ class Runner{
 		pic = runnerPic;
 	}
 	display(){
-		image(pic,200,400);
+		image(pic,200,300);
 	}
-
-// 	isRun(){
-// 		return this.state==0;
-// 		console.log("run");
-// 		pic = runnerPic;
-// 	}
-// 	isJump(){
-// 		return this.state==1;
-// 		console.log("jump");
-// 		this.pic = jumpPic;
-// 	}
-// 	isDodge(){
-// 		return this.state==2;
-// 		console.log("dodge");
-// 		this.pic = dodgePic;
-// 	}
-
-	
 }
+
 function keyPressed() {
   if (keyCode === 87) {
 	  pic = dodgePic;
@@ -265,8 +203,5 @@ function keyPressed() {
   else if (keyCode === 83) {
     pic = jumpPic;
 	  pic.frame(0);
-  }
-  else {
-    pic = runnerPic;
-  }  
+  } 
 }
