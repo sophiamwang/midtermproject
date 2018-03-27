@@ -74,6 +74,7 @@ function draw() {
 console.log(pic.frame(), pic.totalFrames());
 	if (pic.frame() === pic.totalFrames()-1) {
 		pic = runnerPic;
+		pic.frame(0);
 	}
 
   image(bkgroundPic, 10, -100, 1500, 843);
@@ -258,14 +259,12 @@ class Runner{
 }
 function keyPressed() {
   if (keyCode === 87) {
-     for (var i = 0; i<130; i++){
-	     pic = dodgePic; }
-     pic = runnerPic;
+	  pic = dodgePic;
   } 
   else if (keyCode === 83) {
     pic = jumpPic;
   }
   else {
     pic = runnerPic;
-  }
+  }  
 }
