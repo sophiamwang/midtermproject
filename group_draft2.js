@@ -72,6 +72,9 @@ function draw() {
   background(0);
 	
 console.log(pic.frame(), pic.totalFrames());
+	if (pic.frame() === pic.totalFrames()-1) {
+		pic = runnerPic;
+	}
 
   image(bkgroundPic, 10, -100, 1500, 843);
 
