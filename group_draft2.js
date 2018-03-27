@@ -260,9 +260,11 @@ class Runner{
 function keyPressed() {
   if (keyCode === 87) {
 	  pic = dodgePic;
+	  pic.frame(0);
   } 
   else if (keyCode === 83) {
     pic = jumpPic;
+	  pic.frame(0);
   }
   else {
     pic = runnerPic;
