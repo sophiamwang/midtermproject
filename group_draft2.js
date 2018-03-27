@@ -70,6 +70,8 @@ console.log(jumpPic.totalFrames());
 
 function draw() {
   background(0);
+	
+console.log(pic.frame());
 
   image(bkgroundPic, 10, -100, 1500, 843);
 
