@@ -35,7 +35,7 @@ function preload(){
   gunPic = loadImage("images/gun.png");
   lifePic = loadImage("images/lives.png");
   groundPic = loadImage("images/road5.jpg");
-  startPic = loadImage("images/startPage.jpeg");
+  startPic = loadImage("images/startPage");
   //load all obstacle pics
   //load sound files here
   bkMusic = loadSound("sound/backgroundMusic.mp3");
