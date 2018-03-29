@@ -2,16 +2,20 @@
 var obstaclesArray= [];
 var gunArray = [];
 var pic;
-var bkgroundPic, lifePic, runnerPic, gunPic, floorPic,dodgePic,jumpPic,obstacle1Pic,obstacle2Pic,obstacle3Pic,obstacle4Pic;
+var bkgroundPic, groundPic, lifePic, startPic,runnerPic, gunPic, floorPic,dodgePic,jumpPic,obstacle1Pic,obstacle2Pic,obstacle3Pic,obstacle4Pic;
+
+var begin = false;
 
 var tempRunner;
 var runnerX = 200; 
-var runnerY = 300;
+var runnerY = 350;
 var gunX, gunY, numberofGuns;
 var obstacleX,obstacleY, numberofObstacles;
+var groundX = 0;
+var groundY = 625;
 
-var ground = 570; //Pixel height of the ground
-var speed = 3; //Speed at which the ground, batteries, and obstacle will move
+var ground = 625; //Pixel height of the ground
+var speed = 4; //Speed at which the ground, batteries, and obstacle will move
 var gunOffScreen = false;
 var obstacleOffScreen = false;
 
@@ -29,12 +33,12 @@ function preload(){
   batteryPic = loadImage("images/battery.png");
   gunPic = loadImage("images/gun.png");
   lifePic = loadImage("images/lives.png");
-  //floorPic = loadImage("images/floor.gif");
+  groundPic = loadImage("images/road5.jpg");
+  startPic = loadImage("images/startPage.jpeg");
   //load all obstacle pics
   //load sound files here
   bkMusic = loadSound("sound/backgroundMusic.mp3");
   scored = loadSound("sound/score.mp3");
-
 }
 
 function setup(){
@@ -73,53 +77,52 @@ function setup(){
 
 function draw() {
 	background(0);
-	image(bkgroundPic, 10, -100, 1500, 843);
-
-	//image(floor, 0, 630);	
-  // //Display and update each battery object
-  // for (var i=0; i<batteryArray.length;i++) {
-  //   batteryArray[i].display();
-  //   batteryArray[i].move();
-  //   batteryArray[i].checkCollision(x,y); //if kouki picks up battery
-
-  //   //When the battery is off screen, add a new battery
-  //   if (batteryOffScreen == true) {
-  //     batteryArray.splice(i,1);
-  //     var tempBat = new batteries (random(100,width-20), ground); //changed min x to 100
-  //     batteryArray.push(tempBat);
-  //   }
-  // }
-
-  //Display and update each gun object
-  for (var i=0; i<gunArray.length;i++) {
-		gunArray[i].display();
-		gunArray[i].move();
-		gunArray[i].checkCollision(); //check if kouki picks up gun
-		//When the gun is off screen, add a new gun
-		if (gunOffScreen == true) {
-		  gunArray.splice(i,1);
-		  var tempGun = new Guns (random(200,width-20), ground);
-		  gunArray.push(tempGun);
+	if (begin == false) {
+		image(startPic,0,0,1500,843);
+		function mouseClicked() {
+			begin = true;
 		}
 	}
+	else {
+		image(bkgroundPic, 10, -100, 1500, 843);
+	  //Display and move ground
+	  	groundX -= speed;
+	  	if (groundX <-1181) {
+	  		groundX = 0;
+	  	}
+		image(groundPic,groundX,groundY);
+	  //Display and update each gun object
+	  for (var i=0; i<gunArray.length;i++) {
+			gunArray[i].display();
+			gunArray[i].move();
+			gunArray[i].checkCollision(); //check if kouki picks up gun
+			//When the gun is off screen, add a new gun
+			if (gunOffScreen == true) {
+			  gunArray.splice(i,1);
+			  var tempGun = new Guns (random(200,width-20), ground);
+			  gunArray.push(tempGun);
+			}
+		}
 
-  	tempRunner.display();
-	if (pic.frame() === pic.totalFrames()-1) {
-		pic = runnerPic;
-		runnerX = 200;
-		runnerY = 300;
-		pic.frame(0);
+	  	tempRunner.display();
+		if (pic.frame() === pic.totalFrames()-1) {
+			pic = runnerPic;
+			runnerX = 200;
+			runnerY = 350;
+			pic.frame(0);
+		}
+		
+		
+
+	  // Display hits and misses
+	  noStroke();
+	  textSize(20);
+	  fill(255);
+	  text("SCORE: " + points, 50, 120);
+	  displayLives();
+
 	}
 	
-	
-
-  // Display hits and misses
-  noStroke();
-  textSize(20);
-  fill(255);
-  text("SCORE: " + points, 50, 120);
-  displayLives();
-
 }
 
 
@@ -143,7 +146,7 @@ class Guns{
 	}
 	//check if the kouki picked up the gun
 	checkCollision() {
-		if ((this.x -runnerX) < 30) {
+		if ((this.x -runnerX) < 80) {
 		  points += 1;
 		  //Play sound effect for point earned
 		  scored.play();
@@ -198,15 +201,15 @@ class Runner{
 function keyPressed() {
   if (keyCode === 87) {
   	//W
-	  pic = jumpPic; 
-	  runnerY= 250;
-	  pic.frame(0);
+	pic = jumpPic; 
+	runnerY= 280;
+	pic.frame(0);
   } 
   else if (keyCode === 83) {
   	//S
     pic = dodgePic;
     runnerX = 210;
-    runnerY = 350;
+    runnerY = 380;
 	pic.frame(0);
   } 
 }
