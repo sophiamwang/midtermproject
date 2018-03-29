@@ -142,7 +142,7 @@ class Guns{
 		this.y = y;
 	}
 	display() {
-		image(gunPic,this.x,this.y, 100, 60);
+		image(gunPic,this.x,this.y, 80, 40);
 	}
 	move() {
 		this.x -=speed;
