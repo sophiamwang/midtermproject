@@ -5,6 +5,7 @@ var pic;
 var bkgroundPic, groundPic, lifePic, startPic,runnerPic, gunPic, floorPic,dodgePic,jumpPic,obstacle1Pic,obstacle2Pic,obstacle3Pic,obstacle4Pic;
 
 var begin = false;
+var end = false;
 
 var tempRunner;
 var runnerX = 200;
@@ -82,11 +83,12 @@ function draw() {
 	background(0);
 	if (begin == false) {
 		image(startPic,0,0,1500,843);
-		function mouseClicked() {
+		if (mouseIsPressed) {
 			begin = true;
 		}
 	}
-	else {
+
+	else if (begin==true) {
 		image(bkgroundPic, 10, -100, 1500, 843);
 	  //Display and move ground
 	  	groundX -= speed;
@@ -114,19 +116,23 @@ function draw() {
 			runnerY = 350;
 			pic.frame(0);
 		}
+		
+		
 
-
-
-	  // Display score and lives
+	  // Display hits and misses
 	  noStroke();
-    textFont(fontMedium);
-    textSize(20);
+	  textSize(20);
 	  fill(255);
 	  text("SCORE: " + points, 50, 120);
 	  displayLives();
+	  if (life ==0) {
+	  	end = true;
+	  }
 
 	}
-
+	else if (end==true) {
+		image(endPic,0,0)
+	}
 }
 
 
