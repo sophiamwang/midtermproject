@@ -2,13 +2,14 @@
 var obstaclesArray= [];
 var gunArray = [];
 var pic;
-var bkgroundPic, runnerPic, gunPic, floorPic,dodgePic,jumpPic,obstacle1Pic,obstacle2Pic,obstacle3Pic,obstacle4Pic;
+var bkgroundPic, lifePic, runnerPic, gunPic, floorPic,dodgePic,jumpPic,obstacle1Pic,obstacle2Pic,obstacle3Pic,obstacle4Pic;
 
-var tempRunner,runnerX, runnerY;
+var tempRunner;
+var runnerX = 200; 
+var runnerY = 300;
 var gunX, gunY, numberofGuns;
 var obstacleX,obstacleY, numberofObstacles;
 
-var frames = 0;
 var ground = 570; //Pixel height of the ground
 var speed = 3; //Speed at which the ground, batteries, and obstacle will move
 var gunOffScreen = false;
@@ -16,22 +17,24 @@ var obstacleOffScreen = false;
 
 
 // // Player counters
-// var points = 0
-// var life = 5;
+var points = 0
+var life = 5;
 
 //Preload assets
 function preload(){
   bkgroundPic = loadGif("images/background3.gif");
   runnerPic = loadGif("images/running.gif");
-  dodgePic = loadGif("images/jump.gif");
-  jumpPic = loadGif("images/dodge.gif");
+  dodgePic = loadGif("images/dodge.gif");
+  jumpPic = loadGif("images/jump.gif");
   batteryPic = loadImage("images/battery.png");
   gunPic = loadImage("images/gun.png");
+  lifePic = loadImage("images/lives.png");
   //floorPic = loadImage("images/floor.gif");
   //load all obstacle pics
   //load sound files here
   bkMusic = loadSound("sound/backgroundMusic.mp3");
   scored = loadSound("sound/score.mp3");
+
 }
 
 function setup(){
@@ -44,7 +47,7 @@ function setup(){
 	// numberofObstacles = int(random(1,2));
 
 	bkMusic.play();
-	tempRunner = new Runner(200,ground);
+	tempRunner = new Runner();
 
 	// //Instantiate battery ovjects
 	// for (var i = 0; i<numberofBatteries; i++) {
@@ -88,7 +91,7 @@ function draw() {
   // }
 
   //Display and update each gun object
-	for (var i=0; i<gunArray.length;i++) {
+  for (var i=0; i<gunArray.length;i++) {
 		gunArray[i].display();
 		gunArray[i].move();
 		gunArray[i].checkCollision(); //check if kouki picks up gun
@@ -99,26 +102,26 @@ function draw() {
 		  gunArray.push(tempGun);
 		}
 	}
-	console.log(pic.frame(), pic.totalFrames());
+
+  	tempRunner.display();
 	if (pic.frame() === pic.totalFrames()-1) {
 		pic = runnerPic;
+		runnerX = 200;
+		runnerY = 300;
 		pic.frame(0);
 	}
-	tempRunner.display();
+	
+	
 
-  // // Display hits and misses
-  // noStroke();
-  // textSize(20);
-  // text("Assets: " + points, 650, 20);
-  // text("Lives: " + life, 650, 35);
+  // Display hits and misses
+  noStroke();
+  textSize(20);
+  fill(255);
+  text("SCORE: " + points, 50, 120);
+  displayLives();
 
 }
 
-
-/*
-add class Runner here
-  //if lifes == 0, game over
-*/
 
 class Guns{
 	constructor(x,y){
@@ -140,8 +143,7 @@ class Guns{
 	}
 	//check if the kouki picked up the gun
 	checkCollision() {
-		var distGun = dist(this.x, this.y, runnerX, runnerY);
-		if (distGun<= 20) {
+		if ((this.x -runnerX) < 30) {
 		  points += 1;
 		  //Play sound effect for point earned
 		  scored.play();
@@ -185,23 +187,35 @@ class obstacles{
 }
 */
 class Runner{
-	constructor(x,y) {
-		this.x = runnerX;
-		this.y = runnerY;
+	constructor() {
 		pic = runnerPic;
 	}
 	display(){
-		image(pic,200,300);
+		image(pic,runnerX,runnerY);
 	}
 }
 
 function keyPressed() {
   if (keyCode === 87) {
-	  pic = dodgePic;
+  	//W
+	  pic = jumpPic; 
+	  runnerY= 250;
 	  pic.frame(0);
   } 
   else if (keyCode === 83) {
-    pic = jumpPic;
-	  pic.frame(0);
+  	//S
+    pic = dodgePic;
+    runnerX = 210;
+    runnerY = 350;
+	pic.frame(0);
   } 
+}
+
+function displayLives() {
+	var tempX = 50;
+	var tempY = 50;
+	for (var i=0; i<life; i++) {
+		image(lifePic,tempX,tempY,40,40);
+		tempX += 50;
+	}
 }
