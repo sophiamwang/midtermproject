@@ -1,9 +1,14 @@
 var back, guy, floor;
 
+var ground;
+
+var roadX, roadY;
 
 
 
 function preload() {
+    
+    ground = loadImage("images/road5.jpg");
     
     back = loadGif("images/background3.gif");
     
@@ -18,15 +23,24 @@ function preload() {
 
 function setup() {
     createCanvas(1500, 900);
+    
+     roadX = 0;
+    roadY = 625;
 }
 
 function draw() {
     background(0);
+    
+     roadX -= 8;
+    
+      if (roadX < -1181) {
+    roadX = 0;
+  }
 
     
     image(back, 10, -100, 1300, 850);
     
-    //image(floor, 0, 630);
+     image(ground, roadX, roadY);
     
     image(guy, 0, 400, 315, 300);
     
