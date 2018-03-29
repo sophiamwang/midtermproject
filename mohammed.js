@@ -38,7 +38,7 @@ function draw() {
   }
 
     
-    image(back, 10, -100, 1300, 850);
+    image(back, 10, -100);
     
      image(ground, roadX, roadY);
     
