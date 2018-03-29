@@ -7,7 +7,7 @@ var bkgroundPic, groundPic, lifePic, startPic,runnerPic, gunPic, floorPic,dodgeP
 var begin = false;
 
 var tempRunner;
-var runnerX = 200; 
+var runnerX = 200;
 var runnerY = 350;
 var gunX, gunY, numberofGuns;
 var obstacleX,obstacleY, numberofObstacles;
@@ -23,6 +23,7 @@ var obstacleOffScreen = false;
 // // Player counters
 var points = 0
 var life = 5;
+var fontMedium;
 
 //Preload assets
 function preload(){
@@ -39,6 +40,8 @@ function preload(){
   //load sound files here
   bkMusic = loadSound("sound/backgroundMusic.mp3");
   scored = loadSound("sound/score.mp3");
+  //load font
+  fontMedium = loadFont('fonts/Orbitron-Medium.ttf');
 }
 
 function setup(){
@@ -111,18 +114,19 @@ function draw() {
 			runnerY = 350;
 			pic.frame(0);
 		}
-		
-		
 
-	  // Display hits and misses
+
+
+	  // Display score and lives
 	  noStroke();
-	  textSize(20);
+    textFont(fontMedium);
+    textSize(20);
 	  fill(255);
 	  text("SCORE: " + points, 50, 120);
 	  displayLives();
 
 	}
-	
+
 }
 
 
@@ -201,17 +205,17 @@ class Runner{
 function keyPressed() {
   if (keyCode === 87) {
   	//W
-	pic = jumpPic; 
+	pic = jumpPic;
 	runnerY= 280;
 	pic.frame(0);
-  } 
+  }
   else if (keyCode === 83) {
   	//S
     pic = dodgePic;
     runnerX = 210;
     runnerY = 380;
 	pic.frame(0);
-  } 
+  }
 }
 
 function displayLives() {
