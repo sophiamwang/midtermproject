@@ -316,7 +316,7 @@ function keyPressed() {
   if (keyCode === 87) {
   	//W
   	pic = jumpPic;
-  	runnerY= 280;
+  	runnerY= 260;
   	pic.frame(0);
   }
   else if (keyCode === 83) {
