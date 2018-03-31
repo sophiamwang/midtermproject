@@ -6,9 +6,9 @@ var bkgroundPic, groundPic, lifePic, startPic,runnerPic, gunPic, floorPic,dodgeP
 var obstacleY;
 var begin = false;
 var end = false;
-var greenDroneY = 550;
+var greenDroneY = 600;
 var redDroneY = 350;
-var blackDroneY = 400;
+// var blackDroneY = 450;
 
 var dronePic;
 
@@ -48,7 +48,7 @@ function preload(){
   startPic = loadImage("images/startPage");
   droneRedPic = loadImage("images/droneRed.png");
   droneGreenPic = loadImage("images/droneGreen.png");
-  droneBlackPic = loadImage("images/droneBlack.png")
+  // droneBlackPic = loadImage("images/droneBlack.png")
   //load sound files here
   bkMusic = loadSound("sound/backgroundMusic.mp3");
   scored = loadSound("sound/score.mp3");
@@ -225,13 +225,13 @@ class Obstacle {
     return this.type == "red";
     return this.y == redDroneY;
   }
-  isBlack() {
-    return this.type=="black";
-    return this.y == blackDroneY;
-  }
+  // isBlack() {
+  //   return this.type=="black";
+  //   return this.y == blackDroneY;
+  // }
 
   randomColor() {
-    var i = Math.round(random(0, 2))
+    var i = Math.round(random(0, 1))
     console.log("random number: " + i)
     var rndType = ""
     if (i == 0) {
@@ -241,10 +241,10 @@ class Obstacle {
       rndType = "red";
       this.isRed();
     } 
-    else if (i==2) {
-      rndType = "black";
-      this.isBlack();
-    }
+    // else if (i==2) {
+    //   rndType = "black";
+    //   this.isBlack();
+    // }
     console.log("generating random color: " + rndType)
     return rndType
   }
@@ -260,10 +260,10 @@ class Obstacle {
       dronePic = droneGreenPic;
       this.y = greenDroneY;
     }
-    else if (this.isBlack()) {
-      dronePic = droneBlackPic;
-      this.y = blackDroneY;
-    }
+    // else if (this.isBlack()) {
+    //   dronePic = droneBlackPic;
+    //   this.y = blackDroneY;
+    // }
     image(dronePic, this.x, this.y, 100, 70);
   }
 
@@ -339,7 +339,7 @@ function keyPressed() {
   if (keyCode === 87) {
     //W
     pic = jumpPic;
-    runnerY= 260;
+    runnerY= 240;
     pic.frame(0);
   }
   else if (keyCode === 83) {
