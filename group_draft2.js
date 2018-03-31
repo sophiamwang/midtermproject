@@ -31,7 +31,7 @@ function preload(){
   bkgroundPic = loadGif("images/background3.gif");
   runnerPic = loadGif("images/running.gif");
   dodgePic = loadGif("images/dodge.gif");
-  jumpPic = loadGif("images/jump2.gif");
+  jumpPic = loadGif("images/jump.gif");
   batteryPic = loadImage("images/battery.png");
   gunPic = loadImage("images/gun.png");
   lifePic = loadImage("images/lives.png");
