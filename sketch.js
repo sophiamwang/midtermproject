@@ -2,7 +2,7 @@
 var obstaclesArray= [];
 var gunArray = [];
 var pic;
-var bkgroundPic, groundPic, lifePic, startPic,runnerPic, gunPic, floorPic,dodgePic,jumpPic, droneRedPic, droneGreenPic, droneBlackPic;
+var bkgroundPic, groundPic, lifePic, startPic,runnerPic, gunPic, floorPic,dodgePic,jumpPic, droneRedPic,endPic, droneGreenPic, droneBlackPic;
 var obstacleY;
 var begin = false;
 var end = false;
@@ -11,6 +11,8 @@ var redDroneY = 350;
 // var blackDroneY = 450;
 
 var dronePic;
+var tempLife = 0;
+
 
 var tempRunner;
 var runnerX = 200;
@@ -48,6 +50,7 @@ function preload(){
   startPic = loadImage("images/startPage");
   droneRedPic = loadImage("images/droneRed.png");
   droneGreenPic = loadImage("images/droneGreen.png");
+  endPic = loadImage("images/gameover.png")
   // droneBlackPic = loadImage("images/droneBlack.png")
   //load sound files here
   bkMusic = loadSound("sound/backgroundMusic.mp3");
@@ -106,7 +109,7 @@ function draw() {
   }
 
   else if (begin == true) {
-    image(bkgroundPic, 10, -100, 1500, 843);
+    image(bkgroundPic, 10, -100, 1500, 843);    
     //Display and move ground
       groundX -= speed;
       if (groundX <-1181) {
@@ -163,11 +166,11 @@ function draw() {
     text("SCORE: " + points, 50, 120);
     text("Lives:" +life,50, 180);
     displayLives();
-    if (life == 0) {
+    if (life <= 0) {
       end == true;
-    }
-    else if (end==true) {
-      image(endPic,0,0)
+      image(endPic,0,0,1500, 843);
+      points = 0;
+      life=5;
     }
 
   }
@@ -269,8 +272,8 @@ class Obstacle {
 
   move() {
   //jitter
-    this.x += random(-1,1);
-    this.y += random (-1,1);
+    this.x += random(-3,3);
+    this.y += random (-3,3);
 
     //move obstacle towards the runner
     this.x -= speed;
@@ -287,40 +290,38 @@ class Obstacle {
   checkCollision(){
     // red drone must dodge
     //green drone must jump
-
     if (this.type == "green") {
-          var tempCounter =0;
-
-      if (this.x < (runnerX+50)) {
+      if (this.x < (runnerX+30)) {
         //collision happens 
-        if (pic == jumpPic) {
-          life = life;
+        console.log("green Collision");
+        if (pic != jumpPic) {
+            //if pic within these 60 frames were ever jump, then ok
+            tempLife += 1;
+            console.log(tempLife);
+          if (tempLife >60) {
+            life -= 1;
+            tempLife =0;
+          }   
         }
-        else {         
-          tempCounter+=1;
-          if (tempCounter >= 30) {
-             life -= 1;
-          }
-          
-        }
+             
       }
     }
 
     else if (this.type == "red") {
           var tempCounter =0;
-
-      if (this.x < (runnerX+50)) {
-        //collision happens
-        if (pic == dodgePic) {
-          life = life;
+      if (this.x < (runnerX+30)) {
+        //collision happens 
+        console.log("red Collision");
+        if (pic != dodgePic) {
+            //if pic within these 60 frames were ever jump, then ok
+            tempLife += 1;
+            console.log(tempLife);
+          if (tempLife >60) {
+            life -= 1;
+            tempLife =0;
+          }   
         }
-      
-        else {
-          tempCounter+=1;
-          if (tempCounter >= 30) {
-             life -= 1;
-          }
-        }
+             
       }
     }
   }
@@ -339,7 +340,7 @@ function keyPressed() {
   if (keyCode === 87) {
     //W
     pic = jumpPic;
-    runnerY= 240;
+    runnerY= 220;
     pic.frame(0);
   }
   else if (keyCode === 83) {
