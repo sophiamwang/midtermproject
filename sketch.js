@@ -170,6 +170,9 @@ function draw() {
       end == true;
       image(endPic, 0, 0, 1500, 843);
       points = 0;
+      bkMusic.stop();
+      scored.stop();
+      hit.stop();
     }
   }
 }
