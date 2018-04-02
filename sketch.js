@@ -50,7 +50,7 @@ function preload(){
   gunPic = loadImage("images/gun.png");
   lifePic = loadImage("images/lives.png");
   groundPic = loadImage("images/road5.jpg");
-  startPic = loadImage("images/startPage");
+  startPic = loadImage("images/startPage.png");
   droneRedPic = loadImage("images/droneRed.png");
   droneGreenPic = loadImage("images/droneGreen.png");
   endPic = loadImage("images/gameover.png")
