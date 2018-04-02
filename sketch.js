@@ -9,6 +9,9 @@ var end = false;
 var greenDroneY = 600;
 var redDroneY = 350;
 // var blackDroneY = 450;
+var isJump = false;
+var isDodge = false;
+
 
 var dronePic;
 var tempLife = 0;
@@ -132,6 +135,8 @@ function draw() {
     tempRunner.display();
     if (pic.frame() === pic.totalFrames()-1) {
       pic = runnerPic;
+      isJump = false;
+      isDodge = false;
       runnerX = 200;
       runnerY = 350;
       pic.frame(0);
@@ -291,17 +296,19 @@ class Obstacle {
     // red drone must dodge
     //green drone must jump
     if (this.type == "green") {
-      if (this.x < (runnerX+30)) {
+      if (this.x < (runnerX+5)) {
         //collision happens 
-        console.log("green Collision");
-        if (pic != jumpPic) {
+        console.log("isJump"+isJump);
+        if (isJump == false) {
             //if pic within these 60 frames were ever jump, then ok
             tempLife += 1;
-            console.log(tempLife);
-          if (tempLife >60) {
+          if (tempLife >50) {
             life -= 1;
             tempLife =0;
           }   
+        }
+        else {
+          life = life;
         }
              
       }
@@ -309,17 +316,20 @@ class Obstacle {
 
     else if (this.type == "red") {
           var tempCounter =0;
-      if (this.x < (runnerX+30)) {
+      if (this.x < (runnerX+5)) {
         //collision happens 
-        console.log("red Collision");
-        if (pic != dodgePic) {
+        console.log("isDodge"+isDodge);
+
+        if (isDodge==false) {
             //if pic within these 60 frames were ever jump, then ok
             tempLife += 1;
-            console.log(tempLife);
-          if (tempLife >60) {
+          if (tempLife >50) {
             life -= 1;
             tempLife =0;
           }   
+        }
+        else {
+          life = life;
         }
              
       }
@@ -342,6 +352,7 @@ function keyPressed() {
     pic = jumpPic;
     runnerY= 220;
     pic.frame(0);
+    isJump = true;
   }
   else if (keyCode === 83) {
     //S
@@ -349,6 +360,7 @@ function keyPressed() {
     runnerX = 210;
     runnerY = 380;
     pic.frame(0);
+    isDodge = true;
   }
 }
 
