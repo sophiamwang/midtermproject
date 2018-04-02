@@ -51,7 +51,6 @@ function preload(){
   droneRedPic = loadImage("images/droneRed.png");
   droneGreenPic = loadImage("images/droneGreen.png");
   endPic = loadImage("images/gameover.png")
-  // droneBlackPic = loadImage("images/droneBlack.png")
   //load sound files here
   bkMusic = loadSound("sound/backgroundMusic.mp3");
   scored = loadSound("sound/score.mp3");
@@ -65,9 +64,7 @@ function setup(){
   console.log(jumpPic.totalFrames());
   // if width of screen.. canvas size
   createCanvas(1500, 843);
-  // numberofBatteries = int(random(1,4));
   numberofGuns = int(random(1,3));
-  // numberofObstacles = int(random(1,2));
 
   bkMusic.play();
   tempRunner = new Runner();
@@ -80,9 +77,7 @@ function setup(){
   }
 
  //Instantiate drone obstacle objects
-  // droneInSky = new Obstacle(random(1100, 1400), ground - 270, "random");
   droneOnGrd = new Obstacle(random(500, 900), obstacleY, "random");
-  // obstaclesArray.push(droneInSky);
   obstaclesArray.push(droneOnGrd);
 
 }
@@ -168,7 +163,9 @@ function draw() {
     displayLives();
     if (life <= 0) {
       end == true;
-      image(endPic, 0, 0, 1500, 843);
+      fill(0);
+      background(0);
+      image(endPic, -50, -200, 1500, 843);
       points = 0;
       bkMusic.stop();
       scored.stop();
@@ -333,46 +330,6 @@ class Obstacle {
         life -= 1;
       }
     }
-
-    // Must dodge red drone to avoid collision
-    // Must jump over green drone to avoid collision
-    // if (this.type == "green") {
-    //   if (this.x < (runnerX + 5)) {
-    //     //collision happens
-    //     console.log("isJumping " + isJumping);
-    //     if (isJumping == false) {
-    //       //if pic within these 60 frames were ever jump, then ok
-    //       tempLife += 1;
-    //       if (tempLife > 50) {
-    //         life -= 1;
-    //         // Play sound effect for life loss
-    //         hit.play();
-    //         tempLife = 0;
-    //       }
-    //     } else {
-    //       life = life;
-    //     }
-    //   }
-    // } else if (this.type == "red") {
-    //   var tempCounter = 0;
-    //   if (this.x < (runnerX + 5)) {
-    //     //collision happens
-    //     console.log("isDodging "+ isDodging);
-
-    //     if (isDodging == false) {
-    //       //if pic within these 60 frames were ever jump, then ok
-    //       tempLife += 1;
-    //       if (tempLife > 50) {
-    //         life -= 1;
-    //         // Play sound effect for life loss
-    //         hit.play();
-    //         tempLife = 0;
-    //       }
-    //     } else {
-    //       life = life;
-    //     }
-    //   }
-    // }
   }
 }
 
